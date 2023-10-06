@@ -17,10 +17,29 @@ const slides = [
 	}
 ]
 
-let arrow_left = document.getElementById("arrow_left")
+let slideIndex = 0
+showSlides(slideIndex)
 
-arrow_left.addEventListener("click",)
+let arrowLeft = document.getElementById("prev").addEventListener("click", () => {
+	showSlides ((slideIndex -=1))
+})
 
-let arrow_right = document.getElementById("arrow_right")
+let arrowRight = document.getElementById("next").addEventListener("click", () => {
+	showSlides ((slideIndex +=1))
+})
 
-arrow_right.addEventListener
+function showSlides(index) {
+	const slides = document.getElementsByClassName("banner-img");
+	
+	if (index >= slides.length) {
+	  slideIndex = 0;
+	}
+	if (index < 0) {
+	  slideIndex = slides.length - 1;
+	}
+	for (let i = 0; i < slides.length; i++) {
+		slides[i].style.display = "none";
+	}
+	
+	slides[slideIndex].style.display = "block";
+}
