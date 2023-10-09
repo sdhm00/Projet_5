@@ -30,7 +30,8 @@ let arrowRight = document.getElementById("next").addEventListener("click", () =>
 
 function showSlides(index) {
 	const slides = document.getElementsByClassName("banner-img");
-	
+	const tagLineElement = document.querySelector("#banner p")
+
 	if (index >= slides.length) {
 	  slideIndex = 0;
 	}
@@ -42,4 +43,14 @@ function showSlides(index) {
 	}
 	
 	slides[slideIndex].style.display = "block";
+	tagLineElement.innerHTML = slides[slideIndex].tagLine;
+
+	removeDotsSelected();
 }
+
+function removeDotsSelected(){
+	const dots = document.querySelectorAll(".dot")
+	dots.forEach(dot=> dot.classList.remove("dot_selected"))
+	dots[slideIndex].classList.add("dot_selected")
+}
+
