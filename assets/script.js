@@ -29,23 +29,20 @@ let arrowRight = document.getElementById("next").addEventListener("click", () =>
 })
 
 function showSlides(index) {
-	const slides = document.getElementsByClassName("banner-img");
-	const tagLineElement = document.querySelector("#banner p")
+    const slidesContainer = document.querySelector(".banner-img");
 
-	if (index >= slides.length) {
-	  slideIndex = 0;
-	}
-	if (index < 0) {
-	  slideIndex = slides.length - 1;
-	}
-	for (let i = 0; i < slides.length; i++) {
-		slides[i].style.display = "none";
-	}
-	
-	slides[slideIndex].style.display = "block";
-	tagLineElement.innerHTML = slides[slideIndex].tagLine;
+    const tagLineElement = document.querySelector("#banner p")
 
-	removeDotsSelected();
+    if (index >= slides.length) {
+      slideIndex = 0;
+    }
+    if (index < 0) {
+      slideIndex = slides.length - 1;
+    }
+    slidesContainer.setAttribute("src",`./assets/images/slideshow/${slides[slideIndex].image}`)
+    tagLineElement.innerHTML = slides[slideIndex].tagLine;
+
+    removeDotsSelected();
 }
 
 function removeDotsSelected(){
